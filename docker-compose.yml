@@ -11,6 +11,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+    networks:
+      - backend
     healthcheck:
       test: ["CMD", "sh", "-c", "echo 'db.runCommand({ ping: 1 })' | mongosh mongodb://root:root@localhost:27017 --quiet"]
       interval: 10s

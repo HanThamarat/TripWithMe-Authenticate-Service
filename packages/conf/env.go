@@ -12,6 +12,7 @@ type(
 		Server  Server
 		App Application
 		SWAGGER SWAGGER
+		JWT JWT
 	}
 
 	Server struct {

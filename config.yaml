@@ -1,7 +1,7 @@
 DB:
-  URL: "mongodb://root:root@localhost:27017"
-  DBNAME: "TripWithMe"
-  COLLECTION: "users"
+  URL: mongodb://root:root@mongo:27017/TripWithMe?authSource=admin
+  DBNAME: TripWithMe
+  COLLECTION: users
 
 Server:
   Port: 3000
