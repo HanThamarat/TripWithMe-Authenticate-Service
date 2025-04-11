@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - .docker/db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    healthcheck:
+      test: ["CMD", "sh", "-c", "echo 'db.runCommand({ ping: 1 })' | mongosh mongodb://root:root@localhost:27017 --quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    
+  server:
+    restart: always
+    platform: linux/x86_64
+    build:
+      context: ./
+      dockerfile: ${DOCKERFILE:-Dockerfile.dev}
+    command: nodemon --watch . --ext go --exec go run . --signal SIGTERM 
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    networks:
+      - backend
+    depends_on:
+      mongo:
+        condition: service_healthy
+    
+
+
+networks:
+  backend:
+    driver: bridge
