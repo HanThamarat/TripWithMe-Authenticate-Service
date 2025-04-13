@@ -9,9 +9,9 @@ import (
 	"github.com/HanThamarat/TripWithMe-Authenticate-Service/server"
 )
 
-// @title User management & Authentication
+// @title Authentication
 // @version 1.0
-// @description User management & Authentication | Doc by Swagger.
+// @description Authentication | Doc by Swagger.
 // @contact.name Developer Team
 // @contact.url https://technexify.site
 // @contact.email technexify@outlook.com

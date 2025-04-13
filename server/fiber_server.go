@@ -66,7 +66,6 @@ func (s *fiberServer) Start() {
 	s.app.Get("/swagger/*", swagger.HandlerDefault);
 		
 	serverUrl := fmt.Sprintf(":%d", s.conf.Server.Port);
-	s.InitializeUser(api, s.conf, s.db.GetClient());
 
 
 	s.app.Listen(serverUrl);
